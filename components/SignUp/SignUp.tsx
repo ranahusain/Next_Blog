@@ -18,11 +18,19 @@ const SignUp: React.FC<SignUpProps> = ({ onClose }) => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:3000/api/users", {
-        username,
-        email,
-        password,
-      });
+      const response = await axios.post(
+        "http://localhost:3000/api/users/signup",
+        {
+          username,
+          email,
+          password,
+        }
+      );
+      const { user } = response.data;
+      const token = response.data.user.token;
+      localStorage.setItem("token", token);
+      localStorage.setItem("user", JSON.stringify(user));
+
       toast.success("Sign Up Succesfull!");
       onClose();
     } catch (error: any) {

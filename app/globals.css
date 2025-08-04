@@ -20,4 +20,5 @@ body {
 
 .main-hompage {
   background-color: #f7f4ed;
+  overflow: hidden;
 }
