@@ -18,14 +18,20 @@ const Body = () => {
           <button>
             <Link
               href="/SignUp"
-              className="bg-black p-2 text-white text-md rounded-full"
+              className="bg-black p-2 text-white text-xl rounded-full"
             >
               Start Reading
             </Link>
           </button>
         </div>
         <div>
-          <Image className={styles.body_image} src="/medium.png" alt="image" width={500} height={500} />
+          <Image
+            className={styles.body_image}
+            src="/medium.png"
+            alt="image"
+            width={400}
+            height={400}
+          />
         </div>
       </main>
     </>

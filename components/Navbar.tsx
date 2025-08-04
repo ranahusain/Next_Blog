@@ -15,11 +15,11 @@ const Navbar = () => {
           <Link href="/">Our Story</Link>
           <Link href="/">MemberShip</Link>
           <Link href="/">Write</Link>
-          <Link href="/SignIn">Sign in</Link>
+          <Link href="/LogIn">Sign in</Link>
           <button>
             <Link
               className="bg-black p-2 text-white text-md rounded-full"
-              href="/addTopic"
+              href="/SignUp"
             >
               Get Started
             </Link>
