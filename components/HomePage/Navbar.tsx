@@ -1,7 +1,11 @@
-import React from "react";
+"use client";
+import { useState } from "react";
 import styles from "./HomePage.module.css";
 import Link from "next/link";
+import SignUp from "../SignUp/SignUp";
+
 const Navbar = () => {
+  const [showModal, setShowModal] = useState(false);
   return (
     <>
       <nav className={styles.navbar}>
@@ -16,14 +20,15 @@ const Navbar = () => {
           <Link href="/">MemberShip</Link>
           <Link href="/">Write</Link>
           <Link href="/LogIn">Sign in</Link>
-          <button>
+          <button onClick={() => setShowModal(true)}>
             <Link
               className="bg-black py-2 px-3 text-white text-md rounded-full"
-              href="/SignUp"
+              href=""
             >
               Get Started
             </Link>
           </button>
+          {showModal && <SignUp onClose={() => setShowModal(false)} />}
         </div>
       </nav>
       <hr />
