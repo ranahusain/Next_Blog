@@ -3,9 +3,11 @@ import { useState } from "react";
 import styles from "./HomePage.module.css";
 import Link from "next/link";
 import SignUp from "../SignUp/SignUp";
+import LogIn from "../LogIn/LogIn";
 
 const Navbar = () => {
-  const [showModal, setShowModal] = useState(false);
+  const [modalType, setModalType] = useState<"login" | "signup" | null>(null);
+
   return (
     <>
       <nav className={styles.navbar}>
@@ -17,10 +19,14 @@ const Navbar = () => {
 
         <div className={styles.right_side}>
           <Link href="/">Our Story</Link>
-          <Link href="/">MemberShip</Link>
+          <Link href="/">Membership</Link>
           <Link href="/">Write</Link>
-          <Link href="/LogIn">Sign in</Link>
-          <button onClick={() => setShowModal(true)}>
+
+          <button onClick={() => setModalType("login")}>
+            <Link href="">Sign in</Link>
+          </button>
+
+          <button onClick={() => setModalType("signup")}>
             <Link
               className="bg-black py-2 px-3 text-white text-md rounded-full"
               href=""
@@ -28,10 +34,13 @@ const Navbar = () => {
               Get Started
             </Link>
           </button>
-          {showModal && <SignUp onClose={() => setShowModal(false)} />}
         </div>
       </nav>
       <hr />
+
+      {/* Conditionally render modals */}
+      {modalType === "login" && <LogIn onClose={() => setModalType(null)} />}
+      {modalType === "signup" && <SignUp onClose={() => setModalType(null)} />}
     </>
   );
 };
