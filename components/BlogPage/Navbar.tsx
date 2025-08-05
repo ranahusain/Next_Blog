@@ -22,9 +22,9 @@ const Navbar = () => {
         </div>
 
         <div className={styles.right_side}>
-          <Link href="/" className="flex">
+          <Link href="/WriteBlog" className="flex">
             <PiNotePencilLight className={styles.right_side_icon} />
-            Write
+            <p className="mt-0.5 text-lg hover:text-black">&nbsp; Write</p>
           </Link>
           <GoBell className={styles.right_side_icon} />
           <CgProfile className={styles.right_side_icon} />

@@ -23,6 +23,10 @@
   font-size: 30px;
 }
 
+.right_side_icon:hover {
+  color: #111;
+}
+
 .left_nav {
   padding: 20px;
   padding-top: 60px;
@@ -195,7 +199,8 @@
   width: 32px;
   height: 32px;
   border-radius: 50%;
-  background: url('https://randomuser.me/api/portraits/men/1.jpg') center/cover no-repeat;
+  background: url("https://randomuser.me/api/portraits/men/1.jpg") center/cover
+    no-repeat;
   margin-top: 2px;
 }
 

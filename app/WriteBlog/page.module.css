@@ -1,0 +1,37 @@
+.navbar {
+  width: 50%;
+  height: 8vh;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.left_side {
+  font-size: 33px;
+  font-family: "Times New Roman", Times, serif;
+}
+
+.right_side {
+  display: flex;
+  gap: 30px;
+  font-size: 20px;
+  color: rgb(96, 95, 95);
+}
+
+.right_side_icon {
+  font-size: 30px;
+}
+
+.right_side_icon:hover {
+  color: #111;
+}
+
+.blog_post {
+  width: 50%;
+  height: 80vh;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}

@@ -2,7 +2,6 @@ import styles from "./BlogPage.module.css";
 import Link from "next/link";
 import { LuLibrary } from "react-icons/lu";
 import { BsPerson } from "react-icons/bs";
-import { IoHomeOutline } from "react-icons/io5";
 import { IoHome } from "react-icons/io5";
 const LeftSideBar = () => {
   return (
