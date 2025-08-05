@@ -1,6 +1,6 @@
 .navbar {
-  width: 60%;
-  height: 10vh;
+  width: 69%;
+  height: 8vh;
   margin: 0 auto;
   display: flex;
   align-items: center;
@@ -8,7 +8,8 @@
 }
 
 .left_side {
-  font-size: 30px;
+  font-size: 33px;
+  font-family: "Times New Roman", Times, serif;
 }
 
 .right_side {
@@ -18,7 +19,7 @@
 }
 
 .home_body {
-  height: 83vh;
+  height: 85vh;
   width: 70%;
   margin: 0 auto;
   display: flex;
@@ -31,13 +32,13 @@
 }
 
 .body_description p {
-  line-height: 80px;
+  line-height: 130px;
   font-size: 25px;
 }
 
 .body_description h1 {
   font-size: 100px;
-  font-weight: 600c;
+  font-family: "Times New Roman", Times, serif;
 }
 
 .footer {

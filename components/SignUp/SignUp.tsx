@@ -5,6 +5,7 @@ import { IoMailOutline } from "react-icons/io5";
 import { toast } from "react-toastify";
 import { useState } from "react";
 import axios from "axios";
+import { useRouter } from "next/navigation";
 
 type SignUpProps = {
   onClose: () => void;
@@ -14,6 +15,7 @@ const SignUp: React.FC<SignUpProps> = ({ onClose }) => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const router = useRouter();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -32,7 +34,7 @@ const SignUp: React.FC<SignUpProps> = ({ onClose }) => {
       localStorage.setItem("user", JSON.stringify(user));
 
       toast.success("Sign Up Succesfull!");
-      onClose();
+      router.push("/BlogPage");
     } catch (error: any) {
       console.log(error);
       toast.error("Sign up failed");

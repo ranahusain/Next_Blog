@@ -4,6 +4,11 @@ import styles from "./HomePage.module.css";
 import Link from "next/link";
 import SignUp from "../SignUp/SignUp";
 import LogIn from "../LogIn/LogIn";
+import { Playfair_Display } from "next/font/google";
+const playfair = Playfair_Display({
+  subsets: ["latin"],
+  weight: "800",
+});
 
 const Navbar = () => {
   const [modalType, setModalType] = useState<"login" | "signup" | null>(null);
@@ -11,7 +16,7 @@ const Navbar = () => {
   return (
     <>
       <nav className={styles.navbar}>
-        <div className={styles.left_side}>
+        <div className={`${styles.left_side} ${playfair.className}`}>
           <Link className="text-black font-bold" href="/">
             Medium
           </Link>

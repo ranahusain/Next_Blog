@@ -5,6 +5,7 @@ import { toast } from "react-toastify";
 import { useState } from "react";
 import axios from "axios";
 import styles from "../SignUp/SignUp.module.css";
+import { useRouter } from "next/navigation";
 
 type LogInProps = {
   onClose: () => void;
@@ -13,6 +14,7 @@ type LogInProps = {
 const LogIn: React.FC<LogInProps> = ({ onClose }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const router = useRouter();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -31,7 +33,7 @@ const LogIn: React.FC<LogInProps> = ({ onClose }) => {
       localStorage.setItem("user", JSON.stringify(user));
 
       toast.success("Login Successful!");
-      onClose(); // close modal
+      router.push("/BlogPage");
     } catch (error: any) {
       console.error(error);
       toast.error("Login failed");
