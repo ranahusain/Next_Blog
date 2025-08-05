@@ -22,3 +22,20 @@
 .right_side_icon {
   font-size: 30px;
 }
+
+.left_nav {
+  padding: 20px;
+  padding-top: 60px;
+}
+
+.leftbar_icon {
+  font-size: 25px;
+  margin-bottom: 30px;
+  color: rgb(26, 26, 26);
+}
+
+.leftbar_icon:active {
+  background-color: black;
+  color: white;
+  border-radius: 50%;
+}

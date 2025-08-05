@@ -6,10 +6,6 @@
 
 .left {
   width: 15%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
   border-right: 1px solid #d1d5db;
 }
 
@@ -18,7 +14,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  /* justify-content: center; */
 }
 
 .right {
@@ -26,6 +22,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  /* justify-content: center; */
   border-left: 1px solid #d1d5db;
 }
