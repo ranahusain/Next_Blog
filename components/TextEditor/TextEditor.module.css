@@ -1,0 +1,137 @@
+.editorContainer {
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  overflow: hidden;
+  background: white;
+  margin-bottom: 20px;
+}
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 12px 16px;
+  background-color: #f8f9fa;
+  border-bottom: 1px solid #e0e0e0;
+  flex-wrap: wrap;
+}
+
+.toolbarButton {
+  padding: 8px 12px;
+  background: white;
+  border: 1px solid #d0d0d0;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #333;
+  transition: all 0.2s ease;
+  min-width: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+}
+
+.toolbarButton:hover {
+  background-color: #f0f0f0;
+  border-color: #b0b0b0;
+}
+
+.toolbarButton.active {
+  background-color: #1a8917;
+  color: white;
+  border-color: #1a8917;
+}
+
+.toolbarButton.active:hover {
+  background-color: #147a14;
+}
+
+.separator {
+  width: 1px;
+  height: 20px;
+  background-color: #d0d0d0;
+  margin: 0 8px;
+}
+
+.editorWrapper {
+  min-height: 300px;
+}
+
+.editorContent {
+  min-height: 300px;
+  padding: 16px;
+  outline: none;
+  font-family: '"Times New Roman", Times, serif';
+  font-size: 16px;
+  line-height: 1.6;
+  color: #333;
+}
+
+.editorContent:focus {
+  outline: none;
+}
+
+/* Image styling within the editor - Fixed size */
+.editorContent img {
+  max-width: 300px !important;
+  height: auto !important;
+  border-radius: 4px;
+  margin: 8px 0;
+  display: block;
+}
+
+/* Heading styles */
+.editorContent h1 {
+  font-size: 2em;
+  font-weight: bold;
+  margin: 1em 0 0.5em 0;
+  color: #222;
+}
+
+.editorContent h2 {
+  font-size: 1.5em;
+  font-weight: bold;
+  margin: 1em 0 0.5em 0;
+  color: #333;
+}
+
+/* List styles - Fixed bullet points */
+.editorContent ul {
+  margin: 0.5em 0;
+  padding-left: 2em;
+  list-style-type: disc;
+}
+
+.editorContent ol {
+  margin: 0.5em 0;
+  padding-left: 2em;
+  list-style-type: decimal;
+}
+
+.editorContent li {
+  margin: 0.25em 0;
+  display: list-item;
+}
+
+.editorContent ul li::marker {
+  color: #333;
+  font-weight: bold;
+}
+
+.editorContent ol li::marker {
+  color: #333;
+  font-weight: bold;
+}
+
+/* Paragraph spacing */
+.editorContent p {
+  margin: 0.5em 0;
+}
+
+/* Placeholder styling */
+.editorContent p:first-child:empty::before {
+  content: "Write your blog here...";
+  color: #999;
+  pointer-events: none;
+} 

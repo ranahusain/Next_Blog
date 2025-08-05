@@ -4,8 +4,8 @@ import Link from "next/link";
 import { Playfair_Display } from "next/font/google";
 import { GoBell } from "react-icons/go";
 import { CgProfile } from "react-icons/cg";
-import ImageUpload from "@/components/ImageUpload/ImageUpload";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import TextEditor from "@/components/TextEditor/TextEditor";
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -13,7 +13,23 @@ const playfair = Playfair_Display({
 });
 
 const Page = () => {
+  const [username, setUsername] = useState("");
   const [imageURL, setImageURL] = useState("");
+  const [title, setTitle] = useState("");
+  const [content, setContent] = useState("");
+
+  useEffect(() => {
+    const userStr = localStorage.getItem("user");
+    if (userStr) {
+      try {
+        const user = JSON.parse(userStr);
+        setUsername(user.username);
+      } catch {
+        setUsername("");
+      }
+    }
+  }, []);
+
   return (
     <>
       <nav className={styles.navbar}>
@@ -41,22 +57,17 @@ const Page = () => {
           <input
             type="text"
             placeholder="Title"
-            className="text-[60px] w-full outline-none border-none placeholder-gray-300 mb-4"
+            value={title}
+            onChange={e => setTitle(e.target.value)}
+            className="text-[60px] w-full outline-none border-none placeholder-gray-300 mb-4 h-[80px] resize-none overflow-hidden"
+            style={{ 
+              minHeight: '80px', 
+              maxHeight: '80px',
+              lineHeight: '1.2'
+            }}
           />
-          <textarea
-            placeholder="Write your story..."
-            className="w-full text-lg border-none focus:outline-none h-80  placeholder-gray-300 overflow-hidden"
-          />
-          <div className={styles.imagePreviewContainer}>
-            {imageURL && (
-              <img
-                src={imageURL}
-                alt="Blog preview"
-                className={styles.imagePreview}
-              />
-            )}
-          </div>
-          <ImageUpload OnUpload={setImageURL} />
+          <TextEditor />
+        
         </form>
       </div>
     </>

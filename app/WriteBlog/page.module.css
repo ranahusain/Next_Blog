@@ -29,7 +29,7 @@
 
 .blog_post {
   width: 50%;
-  height: 70vh;
+  min-height: 30vh;
   margin: 20px auto;
   display: flex;
   align-items: center;
