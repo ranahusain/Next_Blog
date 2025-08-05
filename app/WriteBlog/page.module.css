@@ -52,3 +52,67 @@
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
   object-fit: cover;
 }
+
+.editorToolbar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 0;
+  border-bottom: 1px solid #e0e0e0;
+  margin-bottom: 16px;
+}
+
+.toolbarButton {
+  padding: 8px 12px;
+  background: none;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #333;
+  transition: all 0.2s;
+  min-width: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.toolbarButton:hover {
+  background-color: #f5f5f5;
+  border-color: #ccc;
+}
+
+.toolbarButton:active {
+  background-color: #e0e0e0;
+}
+
+.toolbarSeparator {
+  width: 1px;
+  height: 20px;
+  background-color: #e0e0e0;
+  margin: 0 4px;
+}
+
+.richTextEditor {
+  min-height: 320px;
+  padding: 16px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 16px;
+  line-height: 1.6;
+  outline: none;
+  background-color: white;
+  color: #333;
+  font-family: '"Times New Roman", Times, serif';
+}
+
+.richTextEditor:focus {
+  border-color: #1a8917;
+  box-shadow: 0 0 0 2px rgba(26, 137, 23, 0.1);
+}
+
+.richTextEditor:empty:before {
+  content: attr(data-placeholder);
+  color: #999;
+  pointer-events: none;
+}
