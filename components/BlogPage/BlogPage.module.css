@@ -39,3 +39,228 @@
   color: white;
   border-radius: 50%;
 }
+
+/* Blog Body Styles */
+.blogBody {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: white;
+}
+
+.blogEntry {
+  display: flex;
+  gap: 20px;
+  padding: 20px 0;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.blogEntry:last-child {
+  border-bottom: none;
+}
+
+.blogContent {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.blogHeader {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: #666;
+}
+
+.blogSource {
+  font-weight: 600;
+  color: #333;
+}
+
+.blogAuthor {
+  color: #666;
+}
+
+.blogTitle {
+  font-size: 20px;
+  font-weight: 600;
+  color: #333;
+  line-height: 1.3;
+  margin: 8px 0;
+}
+
+.blogDescription {
+  font-size: 16px;
+  color: #666;
+  line-height: 1.4;
+  margin-bottom: 12px;
+}
+
+.blogMetadata {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-size: 14px;
+  color: #666;
+}
+
+.metadataItem {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.blogActions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-left: auto;
+}
+
+.actionButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 4px;
+  color: #666;
+  transition: background-color 0.2s;
+}
+
+.actionButton:hover {
+  background-color: #f0f0f0;
+}
+
+.blogThumbnail {
+  width: 120px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 8px;
+  background-color: #f0f0f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #999;
+  font-size: 12px;
+}
+
+.feedSection {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: #666;
+  margin: 20px 0 10px 0;
+}
+
+.feedIcon {
+  font-size: 16px;
+}
+
+.separator {
+  height: 1px;
+  background-color: #e0e0e0;
+  margin: 20px 0;
+}
+
+.rightSidebar {
+  width: 300px;
+  padding: 24px 0 0 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.sectionTitle {
+  font-size: 17px;
+  font-weight: 600;
+  margin-bottom: 16px;
+  color: #222;
+}
+
+.staffPicksSection {
+  margin-bottom: 24px;
+}
+
+.staffPick {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: url('https://randomuser.me/api/portraits/men/1.jpg') center/cover no-repeat;
+  margin-top: 2px;
+}
+
+.avatarSmall {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #eee;
+  color: #444;
+  font-size: 15px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 4px;
+}
+
+.staffPickAuthor {
+  font-size: 13px;
+  color: #444;
+  margin-bottom: 2px;
+}
+
+.staffPickTitle {
+  font-size: 15px;
+  font-weight: 600;
+  color: #111;
+  margin-bottom: 2px;
+}
+
+.staffPickMeta {
+  font-size: 13px;
+  color: #888;
+}
+
+.seeAll {
+  font-size: 14px;
+  color: #1a8917;
+  cursor: pointer;
+  margin-top: 4px;
+  margin-bottom: 8px;
+}
+
+.recommendedTopicsSection {
+  margin-top: 32px;
+}
+
+.topicsList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.topicChip {
+  background: #f2f2f2;
+  color: #222;
+  font-size: 14px;
+  padding: 6px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background 0.2s;
+  margin-bottom: 6px;
+}
+
+.topicChip:hover {
+  background: #e0e0e0;
+}
