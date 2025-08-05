@@ -29,9 +29,26 @@
 
 .blog_post {
   width: 50%;
-  height: 80vh;
-  margin: 0 auto;
+  height: 70vh;
+  margin: 20px auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+.imagePreviewContainer {
+  min-height: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin: 24px 0;
+}
+
+.imagePreview {
+  max-width: 320px;
+  max-height: 220px;
+  border-radius: 12px;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  object-fit: cover;
 }

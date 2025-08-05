@@ -3,8 +3,9 @@ import styles from "./page.module.css";
 import Link from "next/link";
 import { Playfair_Display } from "next/font/google";
 import { GoBell } from "react-icons/go";
-import { PiNotePencilLight } from "react-icons/pi";
 import { CgProfile } from "react-icons/cg";
+import ImageUpload from "@/components/ImageUpload/ImageUpload";
+import { useState } from "react";
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -12,6 +13,7 @@ const playfair = Playfair_Display({
 });
 
 const Page = () => {
+  const [imageURL, setImageURL] = useState("");
   return (
     <>
       <nav className={styles.navbar}>
@@ -43,8 +45,18 @@ const Page = () => {
           />
           <textarea
             placeholder="Write your story..."
-            className="w-full text-lg border-none focus:outline-none h-150  placeholder-gray-300 overflow-hidden"
+            className="w-full text-lg border-none focus:outline-none h-80  placeholder-gray-300 overflow-hidden"
           />
+          <div className={styles.imagePreviewContainer}>
+            {imageURL && (
+              <img
+                src={imageURL}
+                alt="Blog preview"
+                className={styles.imagePreview}
+              />
+            )}
+          </div>
+          <ImageUpload OnUpload={setImageURL} />
         </form>
       </div>
     </>
