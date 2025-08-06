@@ -6,6 +6,8 @@ import { GoBell } from "react-icons/go";
 import { CgProfile } from "react-icons/cg";
 import { useState, useEffect } from "react";
 import TextEditor from "@/components/TextEditor/TextEditor";
+import { toast } from "react-toastify";
+import axios from "axios";
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -13,8 +15,7 @@ const playfair = Playfair_Display({
 });
 
 const Page = () => {
-  const [username, setUsername] = useState("");
-  const [imageURL, setImageURL] = useState("");
+  const [author, setauthor] = useState("");
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
 
@@ -23,12 +24,33 @@ const Page = () => {
     if (userStr) {
       try {
         const user = JSON.parse(userStr);
-        setUsername(user.username);
+        setauthor(user._id);
       } catch {
-        setUsername("");
+        setauthor("");
       }
     }
   }, []);
+
+  const handlePublish = async () => {
+    if (!title || !content) {
+      toast.error("Title and content cannot be empty!");
+      return;
+    }
+
+    try {
+      const response = await axios.post("api/posts/createpost", {
+        title,
+        content,
+        author,
+      });
+      toast.success("Post published successfully!");
+      setTitle("");
+      setContent("<p>Write your blog here...</p>");
+    } catch (error) {
+      console.error(error);
+      toast.error("Failed to publish post!");
+    }
+  };
 
   return (
     <>
@@ -39,7 +61,10 @@ const Page = () => {
           </Link>
         </div>
         <div className={styles.right_side}>
-          <button className="text-white bg-green-700 p-1 px-3 text-sm rounded-full cursor-pointer hover:bg-green-800">
+          <button
+            onClick={handlePublish}
+            className="text-white bg-green-700 p-1 px-3 text-sm rounded-full cursor-pointer hover:bg-green-800"
+          >
             Publish
           </button>
           <GoBell className={styles.right_side_icon} />
@@ -50,7 +75,6 @@ const Page = () => {
 
       <div className={styles.blog_post}>
         <form
-          action=""
           className="mt-20"
           style={{ fontFamily: '"Times New Roman", Times, serif' }}
         >
@@ -58,16 +82,15 @@ const Page = () => {
             type="text"
             placeholder="Title"
             value={title}
-            onChange={e => setTitle(e.target.value)}
+            onChange={(e) => setTitle(e.target.value)}
             className="text-[60px] w-full outline-none border-none placeholder-gray-300 mb-4 h-[80px] resize-none overflow-hidden"
-            style={{ 
-              minHeight: '80px', 
-              maxHeight: '80px',
-              lineHeight: '1.2'
+            style={{
+              minHeight: "80px",
+              maxHeight: "80px",
+              lineHeight: "1.2",
             }}
           />
-          <TextEditor />
-        
+          <TextEditor content={content} onContentChange={(html) => setContent(html)} />
         </form>
       </div>
     </>

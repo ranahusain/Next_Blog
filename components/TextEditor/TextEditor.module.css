@@ -1,5 +1,5 @@
 .editorContainer {
-  border: 1px solid #e0e0e0;
+  /* border: 1px solid #e0e0e0; */
   border-radius: 8px;
   overflow: hidden;
   background: white;
@@ -11,8 +11,8 @@
   align-items: center;
   gap: 4px;
   padding: 12px 16px;
-  background-color: #f8f9fa;
-  border-bottom: 1px solid #e0e0e0;
+  /* background-color: #f8f9fa; */
+  /* border-bottom: 1px solid #e0e0e0; */
   flex-wrap: wrap;
 }
 
@@ -134,4 +134,4 @@
   content: "Write your blog here...";
   color: #999;
   pointer-events: none;
-} 
+}
