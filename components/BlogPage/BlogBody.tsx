@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import styles from "./BlogPage.module.css";
 import { CiHeart } from "react-icons/ci";
 import { SlCalender } from "react-icons/sl";
+import Link from "next/link";
 
 interface Author {
   username: string;
@@ -114,6 +115,9 @@ const BlogBody = () => {
                       : post.content,
                 }}
               />
+              <Link href={`/BlogPage/${post._id}`}>
+                <button>Read More</button>
+              </Link>
               <div className={styles.blogMetadata}>
                 <span className={styles.metadataItem}>
                   <span>
