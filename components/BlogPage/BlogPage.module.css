@@ -44,12 +44,17 @@
   border-radius: 50%;
 }
 
-/* Blog Body Styles */
 .blogBody {
   max-width: 800px;
   margin: 0 auto;
   padding: 20px;
   background-color: white;
+  height: 90vh;
+  overflow-y: auto;
+}
+
+.blogBody::-webkit-scrollbar {
+  display: none;
 }
 
 .blogEntry {
@@ -126,6 +131,9 @@
 .actionButton {
   background: none;
   border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
   padding: 4px;
   border-radius: 4px;
