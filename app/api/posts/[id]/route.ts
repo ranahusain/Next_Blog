@@ -8,7 +8,7 @@ export async function GET(
 ) {
   const { id } = await context.params;
   await connectMongoDB();
-  const post = await Post.findOne({ _id: id });
+  const post = await Post.findOne({ _id: id }).populate("author", "username");
 
   if (!post) {
     return NextResponse.json({ error: "post not found" }, { status: 404 });

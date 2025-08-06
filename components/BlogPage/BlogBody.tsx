@@ -116,7 +116,9 @@ const BlogBody = () => {
                 }}
               />
               <Link href={`/BlogPage/${post._id}`}>
-                <button>Read More</button>
+                <button className="hover:bg-black hover:text-white hover:px-1 hover:rounded-full px-1 cursor-pointer">
+                  Read More
+                </button>
               </Link>
               <div className={styles.blogMetadata}>
                 <span className={styles.metadataItem}>
@@ -124,21 +126,25 @@ const BlogBody = () => {
                     <SlCalender />
                   </span>
                   <span>{new Date(post.createdAt).toLocaleDateString()}</span>
+                  <div className={styles.blogActions}>
+                    <button
+                      className={styles.actionButton}
+                      onClick={() => handleLike(post._id)}
+                      disabled={!userId || likeLoading === post._id}
+                      style={{ color: hasLiked ? "#e0245e" : undefined }}
+                      title={
+                        userId
+                          ? hasLiked
+                            ? "Unlike"
+                            : "Like"
+                          : "Log in to like"
+                      }
+                    >
+                      <CiHeart className="ml-2 text-xl" /> {post.likes.length}
+                    </button>
+                  </div>
                 </span>
               </div>
-            </div>
-            <div className={styles.blogActions}>
-              <button
-                className={styles.actionButton}
-                onClick={() => handleLike(post._id)}
-                disabled={!userId || likeLoading === post._id}
-                style={{ color: hasLiked ? "#e0245e" : undefined }}
-                title={
-                  userId ? (hasLiked ? "Unlike" : "Like") : "Log in to like"
-                }
-              >
-                <CiHeart /> {post.likes.length}
-              </button>
             </div>
           </div>
         );
