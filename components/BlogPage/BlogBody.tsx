@@ -143,7 +143,7 @@ const BlogBody = () => {
   if (loading || !splashDone)
     return (
       <div className={styles.blogBody}>
-        <Loader/>
+        <Loader />
       </div>
     );
 
@@ -211,7 +211,7 @@ const BlogBody = () => {
                     {username === "admin" && (
                       <button
                         onClick={() => handleDelete(post._id)}
-                        className="ml-120 bg-red-600 hover:bg-red-700 text-white font-semibold rounded-full px-6 py-2 text-sm shadow-md transition duration-200 cursor-pointer"
+                        className="ml-100 bg-red-600 hover:bg-red-700 text-white font-semibold rounded-full px-6 py-2 text-sm shadow-md transition duration-200 cursor-pointer"
                       >
                         Delete
                       </button>
