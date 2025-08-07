@@ -5,6 +5,8 @@ import styles from "./BlogPage.module.css";
 import { CiHeart } from "react-icons/ci";
 import { SlCalender } from "react-icons/sl";
 import Link from "next/link";
+import axios from "axios";
+import { toast } from "react-toastify";
 
 interface Author {
   username: string;
@@ -23,6 +25,7 @@ const BlogBody = () => {
   const [posts, setPosts] = useState<Post[]>([]);
   const [loading, setLoading] = useState(true);
   const [likeLoading, setLikeLoading] = useState<string | null>(null);
+  const [username, setUsername] = useState("");
 
   // Get userId from localStorage
   const getUserId = () => {
@@ -37,6 +40,17 @@ const BlogBody = () => {
     }
   };
   const userId = getUserId();
+
+  // Set username once on mount
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const userStr = localStorage.getItem("user");
+    if (!userStr) return;
+    try {
+      const user = JSON.parse(userStr);
+      setUsername(user.username);
+    } catch {}
+  }, []);
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -88,6 +102,21 @@ const BlogBody = () => {
       setLikeLoading(null);
     }
   };
+  const handleDelete = async (postId: string) => {
+    try {
+      const response = await axios.delete(`/api/posts/${postId}`);
+      if (response.status === 200) {
+        setPosts((prev) => prev.filter((post) => post._id !== postId));
+      } else {
+        toast.error(response.data.error || "Failed to delete post.");
+      }
+    } catch (error: any) {
+      toast.error(
+        error.response?.data?.error ||
+          "An error occurred while deleting the post."
+      );
+    }
+  };
 
   if (loading) return <div className={styles.blogBody}>Loading...</div>;
 
@@ -105,6 +134,7 @@ const BlogBody = () => {
                 </span>
               </div>
               <h2 className={styles.blogTitle}>{post.title}</h2>
+
               <div
                 className={styles.blogDescription}
                 dangerouslySetInnerHTML={{
@@ -142,6 +172,14 @@ const BlogBody = () => {
                     >
                       <CiHeart className="ml-2 text-xl" /> {post.likes.length}
                     </button>
+                    {username === "admin" && (
+                      <button
+                        onClick={() => handleDelete(post._id)}
+                        className="ml-120 bg-red-600 hover:bg-red-700 text-white font-semibold rounded-full px-6 py-2 text-sm shadow-md transition duration-200 cursor-pointer"
+                      >
+                        Delete
+                      </button>
+                    )}
                   </div>
                 </span>
               </div>

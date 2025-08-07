@@ -19,13 +19,10 @@ const LogIn: React.FC<LogInProps> = ({ onClose }) => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      const response = await axios.post(
-        "http://localhost:3000/api/users/login",
-        {
-          email,
-          password,
-        }
-      );
+      const response = await axios.post("/api/users/login", {
+        email,
+        password,
+      });
 
       const { user } = response.data;
 
