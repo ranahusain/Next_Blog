@@ -58,7 +58,7 @@ const BlogBody = () => {
         const res = await fetch("/api/posts/getpost");
         const data = await res.json();
         setPosts(data.posts || []);
-      } catch (err) {
+      } catch {
         setPosts([]);
       } finally {
         setLoading(false);
@@ -96,7 +96,7 @@ const BlogBody = () => {
           post._id === postId ? { ...post, likes: data.likes } : post
         )
       );
-    } catch (err) {
+    } catch {
       // Optionally: revert optimistic update or show error
     } finally {
       setLikeLoading(null);
@@ -110,11 +110,17 @@ const BlogBody = () => {
       } else {
         toast.error(response.data.error || "Failed to delete post.");
       }
-    } catch (error: any) {
-      toast.error(
-        error.response?.data?.error ||
-          "An error occurred while deleting the post."
-      );
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        toast.error(
+          error.response?.data?.error ||
+            "An error occurred while deleting the post."
+        );
+      } else if (error instanceof Error) {
+        toast.error(error.message);
+      } else {
+        toast.error("An error occurred while deleting the post.");
+      }
     }
   };
 
