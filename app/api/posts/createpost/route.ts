@@ -3,10 +3,9 @@ import Post from "../../../../models/Post";
 import { NextResponse, NextRequest } from "next/server";
 
 export async function POST(request: NextRequest) {
-  await connectMongoDB();
-  const { title, content, author } = await request.json();
-
   try {
+    await connectMongoDB();
+    const { title, content, author } = await request.json();
     const newPost = await Post.create({ title, content, author });
 
     return NextResponse.json({ user: newPost }, { status: 200 });

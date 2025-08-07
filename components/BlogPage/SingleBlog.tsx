@@ -5,6 +5,8 @@ import styles from "./BlogPage.module.css";
 import { CiHeart } from "react-icons/ci";
 import { SlCalender } from "react-icons/sl";
 import { MdOutlineModeComment } from "react-icons/md";
+import Loader from "@/components/Loader";
+import CommentModal from "./CommentModal";
 
 interface Author {
   username: string;
@@ -27,6 +29,7 @@ const BlogBody: React.FC<BlogBodyProps> = ({ postId }) => {
   const [post, setPost] = useState<Post | null>(null);
   const [loading, setLoading] = useState(true);
   const [likeLoading, setLikeLoading] = useState(false);
+  const [commentModalOpen, setCommentModalOpen] = useState(false);
 
   const getUserId = () => {
     const userStr = localStorage.getItem("user");
@@ -90,7 +93,12 @@ const BlogBody: React.FC<BlogBodyProps> = ({ postId }) => {
     }
   };
 
-  if (loading) return <div className={styles.blogBody}>Loading...</div>;
+  if (loading)
+    return (
+      <div className={styles.blogBody}>
+        <Loader />
+      </div>
+    );
   if (!post) return <div className={styles.blogBody}>Post not found.</div>;
 
   const hasLiked = userId && post.likes.includes(userId);
@@ -126,13 +134,22 @@ const BlogBody: React.FC<BlogBodyProps> = ({ postId }) => {
               >
                 <CiHeart className="ml-5 text-2xl" /> {post.likes.length}
               </button>
-              <button className={styles.commentButton}>
+              <button
+                className={styles.commentButton}
+                onClick={() => setCommentModalOpen(true)}
+                title="View and post comments"
+              >
                 <MdOutlineModeComment />
               </button>
             </span>
           </div>
         </div>
       </div>
+      <CommentModal
+        open={commentModalOpen}
+        onClose={() => setCommentModalOpen(false)}
+        postId={post._id}
+      />
     </div>
   );
 };
