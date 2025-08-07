@@ -32,7 +32,8 @@ const SignUp: React.FC<SignUpProps> = ({ onClose }) => {
 
       toast.success("Sign Up Succesfull!");
       router.push("/BlogPage");
-    } catch (error: any) {
+    } catch (error) {
+      // eslint-disable-next-line no-console
       console.log(error);
       toast.error("Sign up failed");
     }

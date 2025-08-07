@@ -71,7 +71,7 @@ const TextEditor = ({ onContentChange, content }: TextEditorProps) => {
     if (!file || !editor) return;
 
     const filePath = `${Date.now()}-${file.name}`;
-    const { data, error } = await supabase.storage
+    const { error } = await supabase.storage
       .from("blog")
       .upload(filePath, file);
 
@@ -84,7 +84,7 @@ const TextEditor = ({ onContentChange, content }: TextEditorProps) => {
       .from("blog")
       .getPublicUrl(filePath);
 
-    if (urlData?.publicUrl) {
+    if (urlData && urlData.publicUrl) {
       editor.chain().focus().setImage({ src: urlData.publicUrl }).run();
     }
   };
@@ -94,7 +94,7 @@ const TextEditor = ({ onContentChange, content }: TextEditorProps) => {
     const input = document.createElement("input");
     input.type = "file";
     input.accept = "image/*";
-    input.onchange = (e) => handleImageUpload(e as any);
+    input.onchange = (e: Event) => handleImageUpload(e as unknown as React.ChangeEvent<HTMLInputElement>);
     input.click();
   };
 
