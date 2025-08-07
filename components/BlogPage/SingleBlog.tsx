@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import styles from "./BlogPage.module.css";
 import { CiHeart } from "react-icons/ci";
 import { SlCalender } from "react-icons/sl";
+import { MdOutlineModeComment } from "react-icons/md";
 
 interface Author {
   username: string;
@@ -125,10 +126,12 @@ const BlogBody: React.FC<BlogBodyProps> = ({ postId }) => {
               >
                 <CiHeart className="ml-5 text-2xl" /> {post.likes.length}
               </button>
+              <button className={styles.commentButton}>
+                <MdOutlineModeComment />
+              </button>
             </span>
           </div>
         </div>
-        <div className={styles.blogActions}></div>
       </div>
     </div>
   );

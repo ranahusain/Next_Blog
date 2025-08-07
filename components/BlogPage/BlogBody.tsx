@@ -7,6 +7,8 @@ import { SlCalender } from "react-icons/sl";
 import Link from "next/link";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { useRouter } from "next/navigation";
+import Loader from "@/components/Loader";
 
 interface Author {
   username: string;
@@ -22,14 +24,20 @@ interface Post {
 }
 
 const BlogBody = () => {
+  const router = useRouter();
+
   const [posts, setPosts] = useState<Post[]>([]);
   const [loading, setLoading] = useState(true);
   const [likeLoading, setLikeLoading] = useState<string | null>(null);
   const [username, setUsername] = useState("");
+  const [splashDone, setSplashDone] = useState(false); // NEW
+
+  const token = localStorage.getItem("token");
 
   // Get userId from localStorage
   const getUserId = () => {
     if (typeof window === "undefined") return null;
+
     const userStr = localStorage.getItem("user");
     if (!userStr) return null;
     try {
@@ -65,6 +73,14 @@ const BlogBody = () => {
       }
     };
     fetchPosts();
+  }, []);
+
+  useEffect(() => {
+    // Minimum loader duration (600ms for 'Medium')
+    const timer = setTimeout(() => {
+      setSplashDone(true);
+    }, 600);
+    return () => clearTimeout(timer);
   }, []);
 
   const handleLike = async (postId: string) => {
@@ -124,7 +140,12 @@ const BlogBody = () => {
     }
   };
 
-  if (loading) return <div className={styles.blogBody}>Loading...</div>;
+  if (loading || !splashDone)
+    return (
+      <div className={styles.blogBody}>
+        <Loader/>
+      </div>
+    );
 
   return (
     <div className={styles.blogBody}>
@@ -152,7 +173,16 @@ const BlogBody = () => {
                 }}
               />
               <Link href={`/BlogPage/${post._id}`}>
-                <button className="hover:bg-black hover:text-white hover:px-1 hover:rounded-full px-1 cursor-pointer">
+                <button
+                  className="hover:bg-black hover:text-white hover:px-1 hover:rounded-full px-1 cursor-pointer"
+                  onClick={(e) => {
+                    if (!token) {
+                      e.preventDefault();
+                      toast.info("Please sign in first!");
+                    } else {
+                    }
+                  }}
+                >
                   Read More
                 </button>
               </Link>

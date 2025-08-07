@@ -7,6 +7,7 @@ import { PiNotePencilLight } from "react-icons/pi";
 import { CgProfile } from "react-icons/cg";
 import { CiLogout } from "react-icons/ci";
 import { useRouter } from "next/navigation";
+import { toast } from "react-toastify";
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -23,6 +24,7 @@ const Navbar = () => {
   };
 
   const token = localStorage.getItem("token");
+
   return (
     <>
       <nav className={styles.navbar}>
@@ -33,12 +35,34 @@ const Navbar = () => {
         </div>
 
         <div className={styles.right_side}>
-          <Link href="/WriteBlog" className="flex">
+          <button
+            className="flex cursor-pointer"
+            onClick={(e) => {
+              if (!token) {
+                e.preventDefault();
+                toast.info("Please sign in first!");
+              } else {
+                router.push("/WriteBlog");
+              }
+            }}
+          >
             <PiNotePencilLight className={styles.right_side_icon} />
             <p className="mt-0.5 text-lg hover:text-black">&nbsp; Write</p>
-          </Link>
+          </button>
+
           <GoBell className={styles.right_side_icon} />
-          <CgProfile className={styles.right_side_icon} />
+          <CgProfile
+            className={styles.right_side_icon}
+            onClick={(e) => {
+              if (!token) {
+                e.preventDefault();
+                toast.info("LogIn or create account!");
+                router.push("/");
+              } else {
+              }
+            }}
+          />
+
           {token && (
             <button onClick={handleLogout}>
               <CiLogout className={styles.right_side_icon} />
